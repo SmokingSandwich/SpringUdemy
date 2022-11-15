@@ -9,10 +9,10 @@ import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @SpringBootApplication
-public class UdemyApplication implements RepositoryRestConfigurer {
+public class TodoApplication implements RepositoryRestConfigurer {
 
     public static void main(String[] args) {
-        SpringApplication.run(UdemyApplication.class, args);
+        SpringApplication.run(TodoApplication.class, args);
     }
 
 	@Bean
