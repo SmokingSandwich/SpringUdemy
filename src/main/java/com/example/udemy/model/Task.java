@@ -1,7 +1,5 @@
 package com.example.udemy.model;
 
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
