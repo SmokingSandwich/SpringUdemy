@@ -1,4 +1,4 @@
-package com.example.udemy.model;
+package com.example.udemy;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

@@ -43,6 +43,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.flywaydb/flyway-core &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.flywaydb</groupId>-->
+<!--			<artifactId>flyway-core</artifactId>-->
+<!--			<version>9.8.1</version>-->
+<!--		</dependency>-->
+
 	</dependencies>
 	<build>
 		<!--Changed this dependency from sprint initializer -->
