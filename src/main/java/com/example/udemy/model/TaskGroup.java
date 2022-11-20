@@ -5,19 +5,18 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tasks")
-public class Task {
+@Table(name = "task_groups")
+public class TaskGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @NotBlank(message = "Task description can't be null !")
+    @NotBlank(message = "Task group's description can't be null !")
     private String description;
     private boolean done;
-    private LocalDateTime deadline;
     @Embedded
     private Audit audit = new Audit();
 
-    public Task() {
+    public TaskGroup() {
     }
 
     public int getId() {
@@ -43,19 +42,4 @@ public class Task {
     public void setDone(boolean done) {
         this.done = done;
     }
-
-    public LocalDateTime getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(LocalDateTime deadline) {
-        this.deadline = deadline;
-    }
-
-    public void updateFrom(Task source) {
-        description = source.description;
-        done = source.done;
-        deadline = source.deadline;
-    }
-
 }
