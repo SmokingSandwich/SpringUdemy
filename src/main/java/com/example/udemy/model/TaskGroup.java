@@ -3,6 +3,8 @@ package com.example.udemy.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "task_groups")
@@ -13,8 +15,8 @@ public class TaskGroup {
     @NotBlank(message = "Task group's description can't be null !")
     private String description;
     private boolean done;
-    @Embedded
-    private Audit audit = new Audit();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
+    private Set<Task> tasks;
 
     public TaskGroup() {
     }
@@ -41,5 +43,13 @@ public class TaskGroup {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
 }
