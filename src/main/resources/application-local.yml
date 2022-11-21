@@ -7,7 +7,7 @@ spring:
     hibernate:
       dll-auto: validate
   datasource:
-    url: jdbc:h2:file:D:/PROGRAMMING/SPRING/udemy/todo-db
+    url: jdbc:h2:file:C:/PROGRAMMING/SPRING/udemy/todo-db
     username: sa
   main:
     banner-mode: off
