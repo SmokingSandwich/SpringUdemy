@@ -10,5 +10,5 @@ public interface TaskGroupRepository {
 
     TaskGroup save(TaskGroup entity);
 
-    boolean existsByDoneIsFalseAndProject(Integer groupId);
+    boolean existsByDoneIsFalseAndProjectId(Integer groupId);
 }
