@@ -2,8 +2,12 @@ package com.example.udemy;
 
 import com.example.udemy.model.Task;
 import com.example.udemy.model.TaskRepository;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,6 +16,8 @@ import java.util.*;
 @Configuration
 public class TestConfiguration {
     @Bean
+    @Primary
+    @Profile("integration")
     TaskRepository testRepo() {
         return new TaskRepository() {
             private Map<Integer, Task> tasks = new HashMap<>();

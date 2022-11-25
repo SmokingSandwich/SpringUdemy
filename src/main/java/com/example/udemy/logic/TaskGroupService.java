@@ -13,8 +13,7 @@ import org.springframework.web.context.annotation.RequestScope;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-@RequestScope
+//@Service
 public class TaskGroupService {
     private TaskGroupRepository repository;
     private TaskRepository taskRepository;
