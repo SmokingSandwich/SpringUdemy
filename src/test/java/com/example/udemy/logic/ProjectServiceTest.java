@@ -3,7 +3,6 @@ package com.example.udemy.logic;
 import com.example.udemy.TaskConfigurationProperties;
 import com.example.udemy.model.*;
 import com.example.udemy.model.projection.GroupReadModel;
-import org.h2.util.Task;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +26,7 @@ class ProjectServiceTest {
         //and
         TaskConfigurationProperties mockConfig = configurationReturning(false);
         //system under test
-        var toTest = new ProjectService(null, mockGroupRepository, mockConfig);
+        var toTest = new ProjectService(null, mockGroupRepository, null, mockConfig);
 
         //when
         var exception = catchThrowable(() -> toTest.createGroup(LocalDateTime.now(), 0));
@@ -46,7 +45,7 @@ class ProjectServiceTest {
         //and
         TaskConfigurationProperties mockConfig = configurationReturning(true);
         //system under test
-        var toTest = new ProjectService(mockRepository, null, mockConfig);
+        var toTest = new ProjectService(mockRepository, null, null, mockConfig);
 
         //when
         var exception = catchThrowable(() -> toTest.createGroup(LocalDateTime.now(), 0));
@@ -67,7 +66,7 @@ class ProjectServiceTest {
         //and
         TaskConfigurationProperties mockConfig = configurationReturning(true);
         //system under test
-        var toTest = new ProjectService(mockRepository, null, mockConfig);
+        var toTest = new ProjectService(mockRepository, null, null, mockConfig);
 
         //when
         var exception = catchThrowable(() -> toTest.createGroup(LocalDateTime.now(), 0));
@@ -89,11 +88,12 @@ class ProjectServiceTest {
                 Optional.of(project));
         //and
         InMemoryGroupRepository inMemoryGroupRepo = inMemoryGroupRepository();
+        var serviceWithInMemRepo = dummyGroupService(inMemoryGroupRepo);
         int countBeforeCall = inMemoryGroupRepo.count();
         //and
         TaskConfigurationProperties mockConfig = configurationReturning(true);
         //system under test
-        var toTest = new ProjectService(mockRepository, inMemoryGroupRepo, mockConfig);
+        var toTest = new ProjectService(mockRepository, inMemoryGroupRepo, serviceWithInMemRepo, mockConfig);
 
         //when
         GroupReadModel result = toTest.createGroup(today, 1);
@@ -103,6 +103,10 @@ class ProjectServiceTest {
         assertThat(result.getDeadline()).isEqualTo(today.minusDays(1));
         assertThat(result.getTasks().stream().allMatch(task -> task.getDescription().equals("foo"))); //Added stream here
         assertThat(countBeforeCall + 1).isEqualTo(inMemoryGroupRepo.count());
+    }
+
+    private static TaskGroupService dummyGroupService(InMemoryGroupRepository inMemoryGroupRepo) {
+        return new TaskGroupService(inMemoryGroupRepo, null);
     }
 
     private Project projectWith(String projectDescription, Set<Integer> daysToDeadline) {
