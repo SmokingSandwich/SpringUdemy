@@ -11,5 +11,12 @@ spring:
     username: sa
   main:
     banner-mode: off
+management:
+   endpoints:
+     web:
+       exposure:
+         include: '*'
 task.template.allowMultipleTasks: false
+
+
 
