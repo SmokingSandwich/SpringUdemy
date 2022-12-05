@@ -1,5 +1,7 @@
 package com.example.udemy.model;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -67,7 +69,8 @@ public class Task {
         this.deadline = deadline;
     }
 
-    public TaskGroup getGroup() {
+//    @JsonIgnore
+    TaskGroup getGroup() {
         return group;
     }
 

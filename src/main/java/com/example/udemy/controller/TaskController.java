@@ -19,9 +19,11 @@ import java.util.List;
 class TaskController {
     private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
     private final TaskRepository repository;
+    private final TaskService service;
 
     TaskController(final TaskRepository repository, TaskService service) {
         this.repository = repository;
+        this.service = service;
     }
 
     @PostMapping
