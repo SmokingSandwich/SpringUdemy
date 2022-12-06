@@ -1,6 +1,7 @@
 package com.example.udemy.logic;
 
 import com.example.udemy.TaskConfigurationProperties;
+import com.example.udemy.model.Project;
 import com.example.udemy.model.TaskGroup;
 import com.example.udemy.model.TaskGroupRepository;
 import com.example.udemy.model.TaskRepository;
@@ -24,7 +25,12 @@ public class TaskGroupService {
     }
 
     public GroupReadModel createGroup(GroupWriteModel source) {
-        TaskGroup result = repository.save(source.toGroup());
+        return createGroup(source, null);
+
+    }
+
+    public GroupReadModel createGroup(GroupWriteModel source, final Project project) {
+        TaskGroup result = repository.save(source.toGroup(project));
         return new GroupReadModel(result);
     }
 

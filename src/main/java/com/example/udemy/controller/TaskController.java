@@ -1,6 +1,5 @@
 package com.example.udemy.controller;
 
-import com.example.udemy.logic.TaskService;
 import com.example.udemy.model.Task;
 import com.example.udemy.model.TaskRepository;
 import org.slf4j.Logger;
@@ -19,11 +18,9 @@ import java.util.List;
 class TaskController {
     private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
     private final TaskRepository repository;
-    private final TaskService service;
 
-    TaskController(final TaskRepository repository, TaskService service) {
+    TaskController(final TaskRepository repository) {
         this.repository = repository;
-        this.service = service;
     }
 
     @PostMapping
