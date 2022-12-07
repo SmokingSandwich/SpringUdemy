@@ -47,9 +47,9 @@ class TaskGroupController {
             return "groups";
         }
         service.createGroup(current);
-        model.addAttribute("group", new ProjectWriteModel());
+        model.addAttribute("group", new GroupWriteModel());
         model.addAttribute("groups", getGroups());
-        model.addAttribute("message", "Dodano projekt");
+        model.addAttribute("message", "Dodano grupę");
         return "groups";
     }
 
