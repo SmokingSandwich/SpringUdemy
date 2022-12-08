@@ -180,5 +180,11 @@ class ProjectServiceTest {
                     .anyMatch(group -> group.getProject() != null
                             && group.getProject().getId() == projectId);
         }
+
+        @Override
+        public boolean existsByDescription(String description) {
+            map.values().stream().anyMatch(group -> !group.getDescription().equals(description));
+            return false;
+        }
     }
 }
