@@ -1,6 +1,8 @@
 package com.example.udemy;
 
+import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -27,5 +29,10 @@ public class TaskConfigurationProperties {
         public void setAllowMultipleTasks(boolean allowMultipleTasks) {
             this.allowMultipleTasks = allowMultipleTasks;
         }
+    }
+
+    @Bean
+    KeycloakSpringBootConfigResolver keycloakConfigResolver() {
+        return new KeycloakSpringBootConfigResolver();
     }
 }

@@ -11,6 +11,7 @@ spring:
     username: sa
   main:
     banner-mode: off
+    allow-circular-references: true
 management:
    endpoints:
      web:
